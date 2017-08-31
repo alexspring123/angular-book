@@ -41,6 +41,11 @@ export class AppComponent {
 > *查看下面显示的列表正确，说明js数组是正确的*
 
 # 原因
+摘自官方的文档：https://angular.cn/guide/forms#使用-ngmodel-进行双向数据绑定
+> Angular会在<form>标签上自动创建并附加一个NgForm指令。  
+> NgForm指令为form增补了一些额外特性。 它会控制那些带有ngModel指令和name属性的元素，监听他们的属性（包括其有效性）。 它还有自己的valid属性，这个属性只有在它包含的每个控件都有效时才是真。
+> 在内部，Angular 创建了一些FormControl，并把它们注册到NgForm指令，再将该指令附加到<form>标签。 注册每个FormControl时，**使用name属性值作为键值**
+
 angular会检测控件绑定的数据对象是否变化，如果没有变化将不刷新控件。
 我们来模拟一次angualr的过程
 - 首次打开界面
@@ -51,7 +56,7 @@ angular会检测控件绑定的数据对象是否变化，如果没有变化将�
 > 1. for循环第1个数组元素({code:11,name:11})，数据对象没有绑定控件，angular新建input并绑定，此input的name被设置为“input0”
 > 2. for循环第2个数组元素({code:1,name:1})，数据对象已经绑定了input，并且name等于“input0”，angular接着判断input绑定的数据与数组数据一致（内存地址相同，元素属性相同），因此angular不会刷新界面的input控件  
 > 3. for循环第3个数组元素({code:2,name:2})，与第2步相同，也不会刷新input控件  
-**此时可以看到，界面有3个input控件，他们的name分别为input0、input0和input1。也就是第1个和第2个input的name相同了，这就解释为什么点击一次按钮后界面input显示数据为：11、11、2了**
+**此时可以看到，界面有3个input控件，他们的name分别为input0、input0和input1。也就是第1个和第2个input的name相同了。而NgForm中的FormControl是通过name属性作为键值，因此其实在NgForm中只有2个键值对(key为input0和input1)。这就解释为什么点击一次按钮后界面input显示数据为：11、11、2了**
 
 > 理解了上面过程
 >- 就知道如果再点一次添加按钮，界面input的值会变成 12、12、12、2
