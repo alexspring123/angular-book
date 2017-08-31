@@ -42,9 +42,9 @@ export class AppComponent {
 
 # 原因
 摘自官方的文档：https://angular.cn/guide/forms#使用-ngmodel-进行双向数据绑定
-> Angular会在<form>标签上自动创建并附加一个NgForm指令。  
+> Angular会在&lt;form&gt;标签上自动创建并附加一个NgForm指令。  
 > NgForm指令为form增补了一些额外特性。 它会控制那些带有ngModel指令和name属性的元素，监听他们的属性（包括其有效性）。 它还有自己的valid属性，这个属性只有在它包含的每个控件都有效时才是真。
-> 在内部，Angular 创建了一些FormControl，并把它们注册到NgForm指令，再将该指令附加到<form>标签。 注册每个FormControl时，**使用name属性值作为键值**
+> 在内部，Angular 创建了一些FormControl，并把它们注册到NgForm指令，再将该指令附加到&lt;form&gt;标签。 注册每个FormControl时，**使用name属性值作为键值**
 
 angular会检测控件绑定的数据对象是否变化，如果没有变化将不刷新控件。
 我们来模拟一次angualr的过程
